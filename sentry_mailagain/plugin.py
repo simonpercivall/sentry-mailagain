@@ -32,8 +32,6 @@ class MailAgainPlugin(NotificationPlugin):
     project_conf_template = "sentry_mailagain/project_configuration_form.html"
 
     def _last_notification_is_too_old(self, group):
-        # TODO: check if enough time has gone by since the last
-        #       notification to send a new notification
         too_old_age = self.get_option('mail_again_age', group.project)
         try:
             last_notification = NotificationEvent.objects.filter(group=group).latest()
